@@ -1,0 +1,136 @@
+.App {
+  height: 100%
+}
+/* snap-global-header {
+  position: relative;
+  z-index: 10;
+  .app-switcher-menu-container {
+    z-index: 11;
+  }
+} */
+
+.search-dashboard-button::part(button) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.search-dashboard-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 17px 9px 15px;
+  gap: 1px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+
+  /* TW/Blue/600 */
+  background: #2563EB;
+  /* TW/Gray/300 */
+
+  border: 1px solid #CBD5E1;
+  border-radius: 0px 10px 10px 0px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+snap-filter .snap-filter-desktop {
+  text-indent: -999em;
+}
+
+snap-progress-bar .snap-progress-bar--label {
+  display: none;
+}
+
+snap-progress-bar .snap-progress-bar {
+  padding-top: 4px;
+}
+
+#snap-left-path_to {
+  animation: snap-left-path_move 2500ms linear infinite normal forwards
+}
+
+@keyframes snap-left-path_move {
+  0% {
+  transform: translate(40.139293px, -14.4914px)
+  }
+
+  33.333333% {
+  transform: translate(25.366798px, 14.491396px)
+  }
+
+  100% {
+  transform: translate(25.366798px, 14.491396px)
+  }
+}
+
+#snap-left-path {
+  animation: snap-left-path_opacity 2500ms linear infinite normal forwards
+}
+
+@keyframes snap-left-path_opacity {
+  0% {
+  opacity: 1
+  }
+
+  50% {
+  opacity: 1
+  }
+
+  83.333333% {
+  opacity: 0
+  }
+
+  100% {
+  opacity: 0
+  }
+}
+
+#snap-right-path_to {
+  animation: snap-right-path_move 2500ms linear infinite normal forwards
+}
+
+@keyframes snap-right-path_move {
+  0% {
+  transform: translate(9.289135px, 55.137952px)
+  }
+
+  33.333333% {
+  transform: translate(28.000962px, 26.862052px)
+  }
+
+  100% {
+  transform: translate(28.000962px, 26.862052px)
+  }
+}
+
+#snap-right-path {
+  animation: snap-right-path_opacity 2500ms linear infinite normal forwards
+}
+
+@keyframes snap-right-path_opacity {
+  0% {
+  opacity: 1
+  }
+
+  50% {
+  opacity: 1
+  }
+
+  83.333333% {
+  opacity: 0
+  }
+
+  100% {
+  opacity: 0
+  }
+}

@@ -1,0 +1,201 @@
+query InsightsCampaignsData($campaignIds: [Int]!) {
+  insightsCampaignsData(campaignIds: $campaignIds) {
+    lTRChart {
+      ltr
+      upcomingCampaignsCount
+      closedCampaignsCount
+      activeCampaignsCount
+      activeCampaignsParticipation
+      activeCampaignsTotalCents
+      avgDonationCents
+      closedCampaignsParticipation
+      closedCampaignsTotalCents
+      upcomingCampaignsForecastedAmountCents
+      upcomingCampaignsParticipantSignIn
+    }
+    campaignStats {
+      id
+      name
+      end_date
+      start_date
+      donations_count
+      insights_status
+      total_raised_cents
+      forecasted_amount_cents
+      participation
+      participants
+      preloading
+      group_leader_name
+      group_leader_email
+    }
+    donationMapStats {
+      campaign_id
+      campaign_ids
+      donations_amount_cents
+      donations_count
+      lat
+      long
+      postal_code
+    }
+    analyticsSummaryStats {
+      year
+      month
+      campaign_id
+      amount_raised_cents
+    }
+    monthlyCampaignStats {
+      campaign_ids
+      month
+      year
+      preloading
+      participation
+    }
+    inviteStats {
+      campaign_id
+      campaign_ids
+      invite_type
+      invite_count
+      total_amount_cents
+    }
+  }
+}
+
+query InsightsCampaignsDataForReporting($campaignIds: [Int]!) {
+  insightsCampaignsData(campaignIds: $campaignIds) {
+    campaignStats {
+      id
+      name
+      end_date
+      start_date
+      insights_status
+      total_raised_cents
+      start_date
+    }
+  }
+}
+
+query InsightsCampaignSettlements($campaignIds: [Int]!) {
+  insightsCampaignSettlements(campaignIds: $campaignIds) {
+    id
+    campaign_id
+    campaign_name
+    method
+    status
+    amount_cents
+    last_updated
+  }
+}
+
+query InsightsCampaignDonations($campaignIds: [Int]!) {
+  insightsCampaignDonations(campaignIds: $campaignIds) {
+    id
+    campaign_id
+    campaign_name
+    donor_name
+    participant_name
+    amount_cents
+    created_at
+  }
+}
+
+query InsightsDonorParticipantContacts($campaignIds: [Int]!) {
+  insightsDonorParticipantContacts(campaignIds: $campaignIds) {
+    campaign_id
+    donor_id
+    donor_name
+    donor_email
+    participant_id
+    participant_name
+    participant_email
+  }
+}
+
+query UserAssociations($userAssociationsId: ID!, $product: Product!) {
+  userAssociations(id: $userAssociationsId, product: $product) {
+    id
+    fields
+    name
+    type
+    parentId
+  }
+}
+
+query Org($orgId: ID!, $hierarchy: Boolean) {
+  org(id: $orgId, hierarchy: $hierarchy) {
+    id
+    fields
+    name
+    type
+    parentId
+  }
+}
+
+query InsightsOrgsCampaignsSummary(
+  $orgCampaignIds: [InsOrgCampaignSummaryInput]!
+) {
+  insightsOrgsCampaignsSummary(orgCampaignIds: $orgCampaignIds) {
+    orgId
+    totalRaisedCents
+    campaignsCount
+  }
+}
+
+query InsightsCampaignRaiseEntityInfo($campaignId: Int!) {
+  insightsCampaignRaiseEntityInfo(campaignId: $campaignId) {
+    campaign_id
+    entity_id
+  }
+}
+
+query User($userId: String) {
+  user(id: $userId) {
+    firstName
+    id
+    lastName
+    email
+    phoneNumber
+  }
+}
+
+query InsightsOrgsCampaignsSummary(
+  $orgCampaignIds: [InsOrgCampaignSummaryInput]!
+) {
+  insightsOrgsCampaignsSummary(orgCampaignIds: $orgCampaignIds) {
+    orgId
+    totalRaisedCents
+    campaignsCount
+  }
+}
+
+query InsightsPreApprovedContacts($orgIds: [Int]!) {
+  insightsPreApprovedContacts(orgIds: $orgIds) {
+    id
+    activity
+    email
+    first_name
+    invite_sent_at
+    invite_status
+    last_name
+    associated_org_id
+  }
+}
+
+query InsightsPreApprovalTokenValidation($token: String) {
+  insightsPreApprovalTokenValidation(token: $token) {
+    activity
+    associated_org_id
+    email
+    first_name
+    last_name
+  }
+}
+
+query InsightsPreApprovedContactsEmailTest(
+  $emails: [String]!
+  $orgId: String!
+) {
+  insightsPreApprovedContactsEmailTest(emails: $emails, orgId: $orgId) {
+    email
+    status
+  }
+}

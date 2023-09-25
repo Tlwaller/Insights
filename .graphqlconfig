@@ -1,0 +1,5 @@
+{
+  "name": "shared-services-frontend-boilerplate graphQL schema",
+  "schema": ["./node_modules/@snap-mobile/auth-graphql-client-tools/dist/schema/*.schema.graphql","schema.graphql","src/**/*.schema.graphql"],
+  "documents": "src/**/*.document.graphql"                     
+} 

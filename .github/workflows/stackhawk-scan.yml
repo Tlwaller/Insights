@@ -1,0 +1,14 @@
+name: StackHawk
+on:
+  schedule:
+    - cron: '0 4 * * 1' # Run every Monday at 4:00am
+  workflow_dispatch:
+jobs:
+  hawkscan:
+    name: HawkScan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: stackhawk/hawkscan-action@v2
+        with:
+          apiKey: ${{ secrets.STACKHAWK_API_KEY }}

@@ -1,0 +1,15 @@
+schema: 
+  - schema.graphql
+documents: 
+  - './src/**/*.document.graphql'
+generates:
+  src/graphql/generated.ts:
+    schema: 
+      - './src/**/*.schema.graphql'
+      - './node_modules/@snap-mobile/auth-graphql-client-tools/dist/schema/*.schema.graphql' 
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true

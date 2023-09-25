@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  snap-input .input-container {
+    margin-top: theme('spacing.0');
+  }
+  snap-input .label {
+    font-size: theme('fontSize.sm');
+  }
+}
+

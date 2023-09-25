@@ -1,0 +1,65 @@
+mutation InsightsAddPreApprovedContacts(
+  $org: InsAddPreApprovedContactOrgInput!
+  $contacts: [InsPreApprovedContactInput]!
+  $approver: InsAddPreApprovedContactApproverInput!
+  $dashboardUrl: String!
+) {
+  insightsAddPreApprovedContacts(
+    org: $org
+    contacts: $contacts
+    approver: $approver
+    dashboardUrl: $dashboardUrl
+  ) {
+    errors
+    contactsResult {
+      email
+      status
+    }
+    status
+  }
+}
+
+mutation InsightsEditPreApprovedContact(
+  $contactId: Int!
+  $orgId: String!
+  $senderName: String!
+  $updatedContact: InsEditPreApprovedContactInput!
+) {
+  insightsEditPreApprovedContact(
+    contactId: $contactId
+    orgId: $orgId
+    senderName: $senderName
+    updatedContact: $updatedContact
+  ) {
+    error
+    status
+  }
+}
+mutation InsightsResendInvitePreApprovedContact($contactId: Int!, $senderName: String!) {
+  insightsResendInvitePreApprovedContact(contactId: $contactId, senderName: $senderName) {
+    errors
+    status
+  }
+}
+
+mutation InsightsDeletePreApprovedContact($contactId: Int!, $userId: String!) {
+  insightsDeletePreApprovedContact(contactId: $contactId, userId: $userId) {
+    errors
+    status
+  }
+}
+
+mutation InsightsEditPreApprovedContactInvite($token: String) {
+  insightsEditPreApprovedContactInvite(token: $token) {
+    errors
+    status
+    updatedInvite {
+      activity
+      email
+      firstName
+      inviteStatus
+      lastName
+      orgName
+    }
+  }
+}

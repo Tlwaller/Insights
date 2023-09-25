@@ -1,0 +1,15 @@
+query Permissions {
+  me {
+    email
+    permissions
+    id
+  }
+}
+
+query SuperBasicUserInfo {
+  me {
+    firstName
+    lastName
+    id
+  }
+}

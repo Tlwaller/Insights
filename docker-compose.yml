@@ -1,0 +1,24 @@
+version: "3"
+services:
+  frontend-service:
+    container_name: frontend-service 
+    image: snapraise/frontend-service:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    environment:
+      GHP_ACCESS_TOKEN: ${GHP_ACCESS_TOKEN}
+      REACT_APP_GRAPHQL_URI: ${REACT_APP_GRAPHQL_URI}
+      REACT_APP_SSO_HOST: ${REACT_APP_SSO_HOST}
+      REACT_APP_REDIRECT_ON_SIGNOUT_URL: ${REACT_APP_REDIRECT_ON_SIGNOUT_URL}
+      REACT_APP_INCLUDE_LOCAL_SCHEMA: ${REACT_APP_INCLUDE_LOCAL_SCHEMA}
+      REACT_APP_RAISE_APP_URL: ${REACT_APP_RAISE_APP_URL}
+      REACT_APP_APP_PERMISSION_JAILBREAK: ${REACT_APP_APP_PERMISSION_JAILBREAK}
+      REACT_APP_SPLITIO_CLIENT_KEY: ${REACT_APP_SPLITIO_CLIENT_KEY}
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "start.local.dev"]
+

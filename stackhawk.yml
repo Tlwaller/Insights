@@ -1,0 +1,47 @@
+app:
+  applicationId: 569cfdc9-0174-4b15-b9f7-d2615cd6a62f
+  env: Staging
+  host: https://insights.staging.snap.app
+  authentication:
+    # Paths that HawkScan checks to see if it is still logged in during the scan
+    loggedInIndicator: ".*HTTP/2 200.*" # Change me
+    loggedOutIndicator: ".*HTTP/2 302.*" # Change me
+    script:
+      name: stackhawk-sso-login.js
+      parameters:
+        url: "https://api.staging.snap.app/graphql"
+      credentials:
+        username: "${SCAN_USERNAME}"
+        password: "${SCAN_PASSWORD}"
+    cookieAuthorization:
+      cookieNames:
+        - token-dev
+        - enforce_sso
+        - snap_splitio_key
+        - _Snap-Web_session
+    testPath:
+      type: "HEADER"
+      path: /dashboards
+      success: ".*200.*"
+      requestMethod: GET
+hawk:
+  spider:
+    base: false
+    ajax: true
+    maxDurationMinutes: 30
+    seedPaths:
+      - /dashboards
+      - /reporting/campaigns
+      - /reporting/settlements
+      - /reporting/schools-affiliates
+      - /reporting/programs
+      - /reporting/donations
+      - /rollup
+  startupTimeoutMinutes: 30
+hawkAddOn:
+  scripts:
+    - name: stackhawk-sso-login.js
+      type: authentication
+      path: .stackhawk
+      language: JAVASCRIPT
+
